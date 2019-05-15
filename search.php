@@ -1,12 +1,16 @@
 <?php
 /**
- * Step 1: Getting started with Vue
+ * Step 2: Vue Loops
  */
 ?>
 
 <div class="wrapper">
   <div id="app">
-    {{ message }}
+    <ol>
+      <li v-for="movie in movies">
+        {{ movie.title }}
+      </li>
+    </ol>
   </div>
 </div>
 
@@ -16,7 +20,11 @@
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello From Vue!'
+    movies: [
+      { title: 'Chappie' },
+      { title: 'Lord of the Rings' },
+      { title: 'When Kittens Attack' },
+    ]
   }
 })
 </script>
