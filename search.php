@@ -4,10 +4,8 @@
  */
 ?>
 
-<div class="wrapper">
-  <div id="app">
-    {{ message }}
-  </div>
+<div id="app">
+  {{ message }}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -16,7 +14,7 @@
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello From Vue!'
+    message: 'Hello WordCamp!'
   }
 })
 </script>
