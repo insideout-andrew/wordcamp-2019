@@ -1,12 +1,18 @@
 <?php
 /**
- * Step 5: User Driven Data
+ * Step 6: Putting it All Together
  */
 ?>
 
 <div id="app">
-  <p>{{ message }}</p>
-  <input type="text" v-model="message">
+  <ol>
+    <li v-for="movie in movies" v-if="movie.title && movie.description">
+      <h6>{{ movie.title }}</h6>
+    </li>
+  </ol>
+  <input type="text" v-model="title">
+  <input type="text" v-model="description">
+  <button @click="addMovie">Add Movie</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -15,7 +21,15 @@
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello WordCamp'
+    movies: [
+      { 
+        title: 'Chappie', 
+        description: 'When a police droid, Chappie, is stolen and given new programming, he becomes the first robot with the ability to think and feel for himself.' 
+      },
+      {
+        title: ''
+      }
+    ]
   }
 })
 </script>
