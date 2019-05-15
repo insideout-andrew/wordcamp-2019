@@ -1,15 +1,16 @@
 <?php
 /**
- * Step 2: Vue Loops
+ * Step 4: User Actions
  */
 ?>
 
 <div id="app">
-  <ol v-if="show">
-    <li v-for="movie in movies" v-if="movie.title">
+  <ol>
+    <li v-for="movie in movies">
       {{ movie.title }}
     </li>
   </ol>
+  <button @click="reverse">Reverse</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -22,9 +23,13 @@ var app = new Vue({
     movies: [
       { title: 'Chappie' },
       { title: 'Lord of the Rings' },
-      { title: 'When Kittens Attack' },
-      { description: 'Talking frog convinces a boy to kill his dad' }
+      { title: 'When Kittens Attack' }
     ]
+  },
+  methods: {
+    reverse(){
+      this.movies.reverse()
+    }
   }
 })
 </script>
