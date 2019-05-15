@@ -1,6 +1,6 @@
 <?php
 /**
- * Step 2: Vue Loops
+ * Step 3: Vue Conditionals
  */
 ?>
 
