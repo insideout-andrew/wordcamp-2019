@@ -5,8 +5,8 @@
 ?>
 
 <div id="app">
-  <ol>
-    <li v-for="movie in movies">
+  <ol v-if="show">
+    <li v-for="movie in movies" v-if="movie.title">
       {{ movie.title }}
     </li>
   </ol>
@@ -18,10 +18,12 @@
 var app = new Vue({
   el: '#app',
   data: {
+    show: true,
     movies: [
       { title: 'Chappie' },
       { title: 'Lord of the Rings' },
       { title: 'When Kittens Attack' },
+      { description: 'Talking frog convinces a boy to kill his dad' }
     ]
   }
 })
