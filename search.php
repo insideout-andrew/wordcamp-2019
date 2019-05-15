@@ -1,70 +1,53 @@
 <?php
 /**
- * Step 6: Putting it All Together
+ * Step 7: WordPress HTML
  */
+
+get_header();
 ?>
+  <section id="primary" class="content-area">
+    <main id="main" class="site-main">
+      <header class="page-header">
+        <h1 class="page-title">Vue Search</h1>
+      </header>
 
-<div id="app">
-  <ol>
-    <li v-for="movie in movies" v-if="movie.title || movie.description">
-      <h2 v-if="movie.title">
-        {{ movie.title }}
-      </h2>
-      <p v-if="movie.description">
-        {{ movie.description }}
-      </p>
-    </li>
-    <li v-if="title || description">
-      <h2 v-if="title">
-        {{ title }}
-      </h2>
-      <p v-if="description">
-        {{ description }}
-      </p>
-    </li>
-  </ol>
-  <input type="text" v-model="title" placeholder="Movie Title">
-  <br>
-  <textarea v-model="description" placeholder="Movie Description"></textarea>
-  <br>
-  <button @click="commitMovie">Commit Movie</button>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <div class="wrapper">
 
-<script>
-var app = new Vue({
-  el: '#app',
-  data: {
-    title: '',
-    description: '',
-    movies: [
-      { 
-        title: 'Chappie', 
-        description: 'When a police droid, Chappie, is stolen and given new programming, he becomes the first robot with the ability to think and feel for himself.' 
-      },
-      {
-        title: 'Lord of the Rings',
-        description: 'Peoples of Middle-earth, such as Men, Elves, Dwarves, and Hobbits, must overcome the dark power of Sauron by destroying the Ring that gives him power.'
-      },
-      {
-        title: 'When Kittens Attack',
-        description: 'Litterally just cute kittens pouncing on things.'
-      },
-      {
-        title: 'Star Wars: Episode V',
-        description: 'Talking frog convinces a boy to kill his dad'
-      }
-    ]
-  },
-  methods: {
-    commitMovie(){
-      if(this.title || this.description){
-        this.movies.push({ title: this.title, description: this.description })
-        this.title = ''
-        this.description = ''
-      }
-    }
-  }
-})
-</script>
+        <!-- Form for user entered data -->
+        <form>
+          <input type="text" v-model="search" placeholder="Search...">
+          <select v-model="category">
+            <option value="">None</option>
+            <?php foreach(get_categories() as $category): ?>
+              <option value="<?php echo $category->term_id; ?>"><?php echo $category->name; ?></option>
+            <?php endforeach; ?>
+          </select>
+          <input type="submit" value="Search" @click="getResults">          
+        </form>
+
+        <!-- search results here -->
+        <ul v-if="results.length">
+          <li v-for="result in results">
+            <h3>{{ result.post_title }}</h3>
+            <img :src="result.thumbnail">
+            <p><?php echo twentynineteen_get_icon_svg( 'archive', 16 ); ?> {{ result.category }}</p>
+            <p><?php echo twentynineteen_get_icon_svg( 'watch', 16 ); ?> {{ result.post_date }}</p>
+            <p>{{ result.excerpt }}</p>
+            <a :href="result.permalink">Read More</a>
+          </li>
+        </ul>
+        <h3 v-else>No results found.</h3>
+
+        <!-- pagination -->
+        <nav>
+          <a href="#main" v-for="page in maxPages" @click="goToPage(page)">{{ page }}</a>
+        </nav>
+
+      </div>
+
+
+    </main><!-- #main -->
+  </section><!-- #primary -->
+<?php
+get_footer();
