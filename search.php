@@ -14,12 +14,20 @@
         {{ movie.description }}
       </p>
     </li>
+    <li v-if="title || description">
+      <h2 v-if="title">
+        {{ title }}
+      </h2>
+      <p v-if="description">
+        {{ description }}
+      </p>
+    </li>
   </ol>
   <input type="text" v-model="title" placeholder="Movie Title">
   <br>
   <textarea v-model="description" placeholder="Movie Description"></textarea>
   <br>
-  <button @click="addMovie">Add Movie</button>
+  <button @click="commitMovie">Commit Movie</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -50,7 +58,7 @@ var app = new Vue({
     ]
   },
   methods: {
-    addMovie(){
+    commitMovie(){
       if(this.title || this.description){
         this.movies.push({ title: this.title, description: this.description })
         this.title = ''
