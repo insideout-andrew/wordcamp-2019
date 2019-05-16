@@ -19,6 +19,21 @@
 
       //functions that the app can run
       methods: {
+        //go to a specific page of results
+        goToPage(page){
+          this.page = page
+          this.getResults()
+        },
+
+        //when a user clicks search or changes the category, reset the page to 1 and get the results
+        submitSearch(event){
+          //prevent the form from submitting
+          event.preventDefault()
+          //when text/category is changing, we need to reset to page 1 
+          this.page = 1
+          this.getResults()
+        },
+        
         //get the results of a search
         getResults(){
           this.loading = true
@@ -37,21 +52,7 @@
               this.results  = payload.responseJSON.data.results
             }
           })
-        },
-        //go to a specific page of results
-        goToPage(page){
-          this.page = page
-          this.getResults()
-        },
-
-        //when a user clicks search or changes the category, reset the page to 1 and get the results
-        submitSearch(event){
-          //prevent the form from submitting
-          event.preventDefault()
-          //when text/category is changing, we need to reset to page 1 
-          this.page = 1
-          this.getResults()
-        }
+        }        
       },
 
       //run this function when the app is mounted on the el

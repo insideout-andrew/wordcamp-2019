@@ -20,11 +20,9 @@ function enqueue_parent_styles() {
  * AJAX search function
  */
 function ajax_search(){
-  $posts_per_page = get_option('posts_per_page');
-
   //find posts based on the request
   $args = [
-    'offset'      => ($_REQUEST['page'] - 1) * $posts_per_page,
+    'offset'      => ($_REQUEST['page'] - 1) * get_option('posts_per_page'),
     's'           => $_REQUEST['search'],
     'cat'         => $_REQUEST['category'],
     'post_type'   => 'post',
