@@ -19,7 +19,6 @@
 var app = new Vue({
   el: '#app',
   data: {
-    show: true,
     movies: [
       { title: 'Chappie' },
       { title: 'Lord of the Rings' },
