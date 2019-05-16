@@ -15,10 +15,8 @@
       </p>
     </li>
   </ol>
-  <input type="text" v-model="title" placeholder="Movie Title *">
-  <br>
-  <textarea v-model="description" placeholder="Movie Description"></textarea>
-  <br>
+  <input type="text" v-model="title" placeholder="Movie Title *"><br>
+  <textarea v-model="description" placeholder="Movie Description"></textarea><br>
   <button @click="addMovie">Add Movie</button>
 </div>
 
