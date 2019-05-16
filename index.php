@@ -1,6 +1,6 @@
 <?php
 /**
- * Step 7: WordPress HTML
+ * Wordpress Search Results powered by Vue
  */
 
 get_header();
