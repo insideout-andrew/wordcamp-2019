@@ -23,7 +23,7 @@ var app = new Vue({
       { title: 'Chappie' },
       { title: 'Lord of the Rings' },
       { title: 'When Kittens Attack' },
-      { description: 'Talking frog convinces a boy to kill his dad' }
+      { description: 'A young boy becomes trained in the righteous ways of the Force in order to rescue the captured Princess from the evil Empire' }
     ]
   }
 })
