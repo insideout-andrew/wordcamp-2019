@@ -14,20 +14,12 @@
         {{ movie.description }}
       </p>
     </li>
-    <li v-if="title || description">
-      <h2 v-if="title">
-        {{ title }}
-      </h2>
-      <p v-if="description">
-        {{ description }}
-      </p>
-    </li>
   </ol>
-  <input type="text" v-model="title" placeholder="Movie Title">
+  <input type="text" v-model="title" placeholder="Movie Title *">
   <br>
   <textarea v-model="description" placeholder="Movie Description"></textarea>
   <br>
-  <button @click="commitMovie">Commit Movie</button>
+  <button @click="addMovie">Add Movie</button>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -50,16 +42,12 @@ var app = new Vue({
       {
         title: 'When Kittens Attack',
         description: 'Litterally just cute kittens pouncing on things.'
-      },
-      {
-        title: 'Star Wars: Episode V',
-        description: 'Talking frog convinces a boy to kill his dad'
       }
     ]
   },
   methods: {
-    commitMovie(){
-      if(this.title || this.description){
+    addMovie(){
+      if(this.title){
         this.movies.push({ title: this.title, description: this.description })
         this.title = ''
         this.description = ''
