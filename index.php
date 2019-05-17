@@ -6,8 +6,8 @@
 
 <div id="app">
   <ol>
-    <li v-for="movie in movies" v-if="movie.title || movie.description">
-      <h2 v-if="movie.title">
+    <li v-for="movie in movies">
+      <h2>
         {{ movie.title }}
       </h2>
       <p v-if="movie.description">
