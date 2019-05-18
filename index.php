@@ -17,7 +17,9 @@ get_header();
             <select v-model="category" @change="submitSearch">
               <option value="">All Categories</option>
               <?php foreach(get_categories() as $category): ?>
-                <option value="<?php echo $category->term_id; ?>"><?php echo $category->name; ?></option>
+                <option value="<?php echo $category->term_id; ?>">
+                  <?php echo $category->name; ?>
+                </option>
               <?php endforeach; ?>
             </select>
           </label>
@@ -36,8 +38,14 @@ get_header();
               <img :src="result.thumbnail">
             </div>
             <div class="post-meta">
-              <p v-if="result.category"><?php echo twentynineteen_get_icon_svg( 'archive', 16 ); ?> {{ result.category }}</p>
-              <p><?php echo twentynineteen_get_icon_svg( 'watch', 16 ); ?> {{ result.post_date }}</p>
+              <p v-if="result.category">
+                <?php echo twentynineteen_get_icon_svg( 'archive', 16 ); ?> 
+                {{ result.category }}
+              </p>
+              <p>
+                <?php echo twentynineteen_get_icon_svg( 'watch', 16 ); ?> 
+                {{ result.post_date }}
+              </p>
             </div>
             <p>{{ result.excerpt }}</p>
             <a :href="result.permalink">Read More</a>
