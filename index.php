@@ -56,7 +56,14 @@ get_header();
 
         <!-- pagination -->
         <nav v-if="maxPages > 1">
-          <a href="#app" v-for="index in maxPages" @click="goToPage(index)" :class="page == index ? 'active' : ''">{{ index }}</a>
+          <a 
+            href="#app" 
+            v-for="index in maxPages" 
+            @click="goToPage(index)" 
+            :class="page == index ? 'active' : ''"
+          >
+            {{ index }}
+          </a>
         </nav>
 
         <div class="loading" v-if="loading"></div>
