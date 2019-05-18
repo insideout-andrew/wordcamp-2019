@@ -46,7 +46,13 @@ var app = new Vue({
   methods: {
     addMovie(){
       if(this.title){
-        this.movies.push({ title: this.title, description: this.description })
+        //push the users content to the movies array
+        this.movies.push({ 
+          title: this.title, 
+          description: this.description 
+        })
+
+        //reset the users content
         this.title = ''
         this.description = ''
       }
